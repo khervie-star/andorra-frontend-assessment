@@ -1,4 +1,4 @@
-# Task Management Assessment – Andorra Frontend
+# Task Management – Andorra Frontend Assessment
 
 A modern, responsive task management web app built with **React + Vite**, designed for performance, modularity, and ease of use. This project was created as part of a frontend assessment and showcases clean architecture, reusable components, and functional state management.
 
@@ -27,7 +27,7 @@ The codebase follows a modular and maintainable structure:
 src/
 ├── assets/ # Static assets like icons, illustrations
 ├── components/ # Reusable UI components
-|__ context / # App Context
+├── context / # App Context
 ├── hooks/ # Custom React hooks
 ├── pages/ # Route-based pages
 ├── routes/ # React Router configuration
@@ -60,15 +60,11 @@ npm run dev
 
 ## Architectural Decisions
 
-Vite over CRA or Next.js: Chosen for its blazing-fast dev server and modern build tooling.
-
-Zustand: Used instead of Redux for its simplicity, minimal boilerplate, and great developer experience for local/global state.
-
-Feature-first folder structure: Encourages modularity and scalability as the app grows.
-
-Formik + Yup: Offers powerful, declarative form handling with integrated schema validation.
-
-MUI + styled-components: Combined to balance ease of use (with MUI components) and flexibility (for custom styles).
+- Vite: Fast, modern etc
+- Zustand: Used instead of Redux for its simplicity, minimal boilerplate, and great developer experience for local/global state.
+- Folder structure : Encourages modularity and scalability as the app grows, easy to read and maintain.
+- Formik + Yup: Better and declarative form handling with integrated schema validation.
+- MUI + styled-components: Combined to balance ease of use (with MUI components) and flexibility (for custom styles).
 
  
  
@@ -76,5 +72,3 @@ MUI + styled-components: Combined to balance ease of use (with MUI components) a
 Zustand over Context or Redux: Zustand is lightweight and very flexible for this scale. For larger apps with more complex state trees, Redux or something like Jotai might offer more structure.
 
 No backend logic: Since this is frontend-only, data is mocked or managed locally. In a real-world project, API integration would be handled with tools like React Query, Axios, or tRPC.
-
-Minimal tests: Focus was on clean implementation and UI, so no unit/E2E tests were included, but the structure supports easy testing via Jest or Vitest.
