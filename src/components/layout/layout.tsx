@@ -14,6 +14,10 @@ import { Sidebar } from './components';
 
 const DRAWER_WIDTH = 280;
 
+interface DarkModeProps {
+  $darkMode: boolean;
+}
+
 const AppContainer = styled.div`
   display: flex;
 `;
@@ -36,7 +40,7 @@ const Toolbar = styled(MuiToolbar)`
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1.5rem !important;
-  background-color: ${({ theme }) => theme.colors.background || "#fff"};
+  background-color: ${({ theme }) => theme.colors.background};
   @media (min-width: 768px) {
     width: calc(100% - ${DRAWER_WIDTH}px);
     margin-left: ${DRAWER_WIDTH}px;
@@ -49,10 +53,12 @@ const DrawerPaperStyles = {
   borderRight: "0px solid transparent !important",
 };
 
-const Main = styled.main`
+const Main = styled.main<DarkModeProps>`
   flex-grow: 1;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.background};
+  min-height: 100vh;
+  background-color: ${({ theme, $darkMode }) =>
+    $darkMode ? theme.colors.background : "#ffffff"};
 `;
 
 const ContentWrapper = styled.div`
@@ -75,10 +81,10 @@ const SearchBar = styled(TextField)`
   }
 `;
 
-const MobileLogo = styled.p<{ theme: any }>`
+const MobileLogo = styled.p`
   font-weight: 600;
   font-size: 1.25rem;
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme }) => theme.colors.primary};
   margin: 0;
 `;
 
@@ -89,13 +95,13 @@ const IconWrapper = styled(Box)`
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  color: ${({ theme }) => theme.colors.iconColor};
-  background-color: ${({ theme }) =>
-    theme.colors.iconBackground || "transparent"};
+  color: ${({ theme }) => theme.colors.iconColor} !important;
+  background-color: ${({ theme }) => theme.colors.iconBackground} !important;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.iconHover || "#f5f5f5"};
+    background-color: ${({ theme }) =>
+      theme.colors.iconHover || "#f5f5f5"} + " !important;
   }
 `;
 
@@ -152,8 +158,26 @@ export const AppLayout = () => {
               style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
               <Tooltip title={darkMode ? "Light mode" : "Dark mode"} arrow>
                 <IconWrapper theme={currentTheme}>
-                  <IconButton onClick={toggle} size="small">
-                    {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                  <IconButton onClick={toggle}>
+                    {darkMode ? (
+                      <Sun
+                        size={20}
+                        color={
+                          darkMode
+                            ? darkTheme.colors.iconColor
+                            : lightTheme.colors.iconColor
+                        }
+                      />
+                    ) : (
+                      <Moon
+                        size={20}
+                        color={
+                          darkMode
+                            ? darkTheme.colors.iconColor
+                            : lightTheme.colors.iconColor
+                        }
+                      />
+                    )}
                   </IconButton>
                 </IconWrapper>
               </Tooltip>
@@ -161,17 +185,29 @@ export const AppLayout = () => {
               <Tooltip title="Notifications" arrow>
                 <IconWrapper theme={currentTheme}>
                   <IconButton size="small">
-                    <Bell size={20} />
+                    <Bell
+                      size={20}
+                      color={
+                        darkMode
+                          ? darkTheme.colors.iconColor
+                          : lightTheme.colors.iconColor
+                      }
+                    />
                   </IconButton>
                 </IconWrapper>
               </Tooltip>
 
               <Tooltip title="Menu" arrow>
-                <IconWrapper
-                  theme={currentTheme}
-                  sx={{ display: { xs: "flex", md: "none" } }}>
+                <IconWrapper theme={currentTheme} sx={{ display: { xs: "block", md: "none" } }}>
                   <IconButton onClick={handleDrawerToggle} size="small">
-                    <Menu size={20} />
+                    <Menu
+                      size={20}
+                      color={
+                        darkMode
+                          ? darkTheme.colors.iconColor
+                          : lightTheme.colors.iconColor
+                      }
+                    />
                   </IconButton>
                 </IconWrapper>
               </Tooltip>
@@ -207,7 +243,7 @@ export const AppLayout = () => {
           </Drawer>
         </Box>
 
-        <Main>
+        <Main $darkMode={darkMode}>
           <ContentWrapper>
             <Outlet />
           </ContentWrapper>
