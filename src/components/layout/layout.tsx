@@ -1,6 +1,6 @@
 import { Bell, Menu, Moon, Search, Sun } from 'lucide-react';
 import * as React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 import { Box, CssBaseline, Drawer, IconButton, InputAdornment, Tooltip } from '@mui/material';
 
@@ -43,12 +43,12 @@ export const AppLayout = () => {
       <AppContainer>
         <AppBar position="fixed" theme={currentTheme}>
           <Toolbar>
-            {/* Show logo only on mobile */}
             <Box sx={{ display: { xs: "block", md: "none" } }}>
-              <MobileLogo theme={currentTheme}>Taskr.</MobileLogo>
+              <Link to="/">
+                <MobileLogo theme={currentTheme}>Taskr.</MobileLogo>
+              </Link>
             </Box>
 
-            {/* Search bar - only on desktop */}
             <Box sx={{ display: { xs: "none", md: "block" } }}>
               <SearchBar
                 placeholder="Search..."
