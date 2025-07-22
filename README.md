@@ -23,6 +23,7 @@ Hosted on Vercel: [https://task-fawn.vercel.app](https://taskr-fawn.vercel.app)
 
 The codebase follows a modular and maintainable structure:
 
+```bash
 src/
 ├── assets/ # Static assets like icons, illustrations
 ├── components/ # Reusable UI components
@@ -34,6 +35,7 @@ src/
 ├── styles/ # Global styling and theming
 ├── types/ # Global TypeScript types
 └── utils/ # Utility functions
+```
 
 
 
@@ -53,6 +55,7 @@ npm install
 
 # 4. Start the development server
 npm run dev
+```
 
 
 ## Architectural Decisions
