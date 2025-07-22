@@ -14,7 +14,14 @@ export const Providers: React.FC<IProps> = ({ children }) => {
   return (
     <SCThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <ThemeProvider>
-        <Toaster richColors closeButton />
+        <Toaster
+          richColors
+          closeButton
+          position="top-right"
+          style={{
+            fontFamily: "Outfit",
+          }}
+        />
         {children}
       </ThemeProvider>
     </SCThemeProvider>

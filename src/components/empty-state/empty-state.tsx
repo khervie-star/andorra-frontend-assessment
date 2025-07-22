@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 
 import animationData from '../../assets/lottie/empty.json';
 import { AppButton } from '../button';
+import { ContentWrapper, EmptyStateContainer, MessageText } from './empty-state.styled';
 
 export const EmptyState: React.FC<IEmptyStateProps> = ({
   text,
@@ -17,16 +18,17 @@ export const EmptyState: React.FC<IEmptyStateProps> = ({
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   return (
-    <div className="border border-dashed w-full h-full bg-gray-50 rounded-[8px] p-8">
-      <div className="w-full h-full flex justify-center items-center text-center mx-auto max-w-[500px]">
+    <EmptyStateContainer>
+      <ContentWrapper>
         <div>
           <Lottie options={defaultOptions} height={200} width={200} />
-          <p className="text-gray-500 text-[16px] font-normal mb-6">{text}</p>
+          <MessageText>{text}</MessageText>
           {!!btnText && <AppButton click={btnFxn}>{btnText}</AppButton>}
         </div>
-      </div>
-    </div>
+      </ContentWrapper>
+    </EmptyStateContainer>
   );
 };
 

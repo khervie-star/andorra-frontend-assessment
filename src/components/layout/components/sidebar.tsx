@@ -1,5 +1,5 @@
 import { FileSliders, FolderKanban, LayoutDashboard, LogOut, Settings } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'sonner';
 
 import sidebarIllustration from '../../../assets/sidebar-illustration.svg';
@@ -47,7 +47,6 @@ interface SidebarProps {
   theme: IAppTheme;
 }
 
-
 export const Sidebar = ({ closeSidebar, theme }: SidebarProps) => {
   const location = useLocation();
 
@@ -57,13 +56,18 @@ export const Sidebar = ({ closeSidebar, theme }: SidebarProps) => {
 
   return (
     <SidebarContainer theme={theme}>
-      <Logo theme={theme}>Taskr.</Logo>
+      <Link to={"/"} style={{ textDecoration: "none" }}>
+        <Logo theme={theme}>Taskr.</Logo>
+      </Link>
       <div>
         <div>
           <NavList>
             {navRoutes.map((item: INavProps, index: number) => {
               const Icon = item.icon;
-              const isActive = location.pathname === item.path;
+              const isActive =
+                item.path === "/"
+                  ? location.pathname === item.path
+                  : location.pathname.startsWith(item.path);
 
               return (
                 <NavItem key={index}>

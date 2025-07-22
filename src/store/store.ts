@@ -67,7 +67,7 @@ export const useTaskStore = create<TaskState>()(
       },
     }),
     {
-      name: "task-store", // localStorage key
+      name: "task-store",
     }
   )
 );

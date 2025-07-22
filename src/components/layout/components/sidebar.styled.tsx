@@ -13,7 +13,7 @@ export const SidebarContainer = styled.div<{ theme: IAppTheme }>`
   color: ${({ theme }) => theme.colors.text};
   height: 100vh;
   min-height: 100vh;
-  padding: 2.5rem 1.5rem;
+  padding: 1rem 1.5rem;
   position: relative;
   transition: all 0.3s ease;
   font-family: "Outfit", sans-serif;

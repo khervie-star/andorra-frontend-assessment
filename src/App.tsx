@@ -1,5 +1,5 @@
 import { Providers } from './provider';
-import { MainRoutes } from './routes/routes';
+import MainRoutes from './routes/routes';
 
 function App() {
   return (

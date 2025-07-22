@@ -14,6 +14,7 @@ export const AppButton: React.FC<IButtonProps> = ({
   variant = "Primary",
   children,
   extraClass,
+  style,
 }) => {
   const { darkMode } = useThemeMode();
   const theme = useTheme();
@@ -89,10 +90,12 @@ export const AppButton: React.FC<IButtonProps> = ({
           ? btnSecondary
           : undefined
       }
+      style={style}
       className={extraClass}
       type={type}>
-      <div style={{display:'flex', alignItems:"center", gap:"8px"}}>        {children}
-
+      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        {" "}
+        {children}
         {loading && (
           <CircularProgress
             sx={{
@@ -122,4 +125,5 @@ interface IButtonProps {
   children: React.ReactNode;
   extraClass?: string;
   type?: "button" | "submit";
+  style?: any;
 }
